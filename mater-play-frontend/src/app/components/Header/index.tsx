@@ -10,7 +10,7 @@ function Header () {
             <Container>
                 <Toolbar>
                     <Typography variant="h6">
-                        Mater play
+                        Mater Play
                     </Typography>
                     <Box
                         sx={{
