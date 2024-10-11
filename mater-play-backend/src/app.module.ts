@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Movie } from './entities/movie-entity';
+import { MovieController } from './controllers/movie-controller';
+import { MovieSercive } from './services/movie-service';
 //cd mater-play-backend --> pnpm run start:dev (sobe aplicação)
 @Module({
   imports: [
@@ -14,11 +17,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       database: process.env.DB_NAME,
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
-      entities: [],
+      entities: [Movie],
       synchronize: true,
-    })
+    }),
+    TypeOrmModule.forFeature([Movie]),
   ],
-  controllers: [], 
-  providers: [], 
+  controllers: [MovieController], 
+  providers: [MovieSercive], 
 })
 export class AppModule {}
