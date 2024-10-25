@@ -2,7 +2,7 @@ import { Box, Container, Stack, Typography } from "@mui/material";
 import MovieCard from "../MovieCard";
 import { useEffect, useState } from "react";
 import { IMovie } from "../../@libs/types";
-import { MoviesService } from "../../services/movies-service";
+import { MovieService } from "../../services/movie-service";
 
 
 
@@ -18,7 +18,7 @@ function Section({
     useEffect(() => {
         //Executa o que está aqui dentro quando carrega o componente
 
-        MoviesService.getMovies()
+        MovieService.getMovies()
         .then(result => {
             setMovies(result)
         });
