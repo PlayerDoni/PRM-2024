@@ -1,21 +1,19 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpException, HttpStatus, Param, ParseUUIDPipe, Post, Put, Query } from "@nestjs/common";
-import { Category } from "src/entities/category-entity";
-import { Movie } from "src/entities/movie-entity";
-import { MovieService } from "src/services/movie-service";
+import { Category } from "src/categories/category-entity";
+import { Movie } from "src/movies/movie-entity";
+import { MovieService } from "src/movies/movie-service";
 
 @Controller('movies')
 export class MovieController {
-    constructor(private service: MovieService) {
-    }
+    constructor(private service: MovieService) {}
     
     @Get()
     findAll(@Query('categoryId') categoryId?: string): Promise<Movie[]> {
-      if (categoryId) {
-        return this.service.findByCategory({
-          id: Number(categoryId),
-        } as Category);
-      }
-
+        if(categoryId){
+            return this.service.findByCategory({
+                id: Number(categoryId),
+            } as Category);
+        }
         return this.service.findAll();
     }
 
