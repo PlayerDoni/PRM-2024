@@ -1,8 +1,8 @@
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { MovieService } from "../../services/movies-service";
 import { IMovie } from "../../@libs/types";
-import { MovieService } from "../../services/movie-service";
 
 function HighLightSection() {
 
@@ -58,7 +58,7 @@ function HighLightSection() {
                             >
                                 {movie.ageRating}
                             </span>    
-                            Aventura, Fantasia, Ação
+                           {movie.genres && movie.genres.map(genre => (genre.description)).join(', ')}
                         </Typography>
                         <Typography
                             variant="subtitle1"
